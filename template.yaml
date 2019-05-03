@@ -26,7 +26,7 @@ objects:
     name: "${NAME}"
   spec:
     initContainers:
-    - name: ocp-storage-generator-init
+    - name: "${NAME}-init"
       image: registry.access.redhat.com/ubi7/ubi-init:latest
       env:
       - name: VOLUME_CAPACITY
@@ -46,7 +46,7 @@ objects:
         mountPath: "/mydata"
     containers:
     - image: quay.io/crio/pause:latest
-      name: ocp-storage-generator
+      name: "${NAME}"
     volumes:
     - name: "${NAME}"
       persistentVolumeClaim:
